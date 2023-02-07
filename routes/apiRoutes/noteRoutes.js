@@ -2,18 +2,19 @@ const router = require('express').Router();
 const { createNewNote, deleteNote } = require('../../lib/notes');
 let { notesArray } = require('../../db/db.json');
 
-//notes are available at api/notes in JSON 
+// notes are available at api/notes in JSON
 router.get('/notes', (req, res) => {
   let results = notesArray;
   res.json(results);
 });
 
 router.post('/notes', (req, res) => {
-  //set id based on what the next index of the array will be
+  // set id based on what the next index of the array will be
   if(notesArray){
-  req.body.id = notesArray.length.toString();
-  } else 
-  {req.body.id = 0}
+    req.body.id = notesArray.length.toString();
+  } else {
+    req.body.id = 0
+  }
   res.json(createNewNote(req.body, notesArray));
 });
 

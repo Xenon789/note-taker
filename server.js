@@ -1,21 +1,21 @@
 const express = require('express');
 
 const PORT = process.env.PORT || 3001;
-const server = express();
+const app = express();
 const apiRoutes = require('./routes/htmlRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
 
-//parse URL encoded & JSON
-server.use(express.urlencoded({ extended: true }));
-server.use(express.json());
+// parse URL encoded & JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-//host public folder
+// host public folder
 server.use(express.static('public'));
 
-//use apiRoutes
-server.use('/api', apiRoutes);
-server.use('/', htmlRoutes);
+// routes app to apiRoutes
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
 });
