@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // host public folder
-server.use(express.static('public'));
+app.use(express.static('public'));
 
 // routes app to apiRoutes
 app.use('/api', apiRoutes);

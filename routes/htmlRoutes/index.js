@@ -1,5 +1,5 @@
 const path = require('path');
-const router = require('express').Routher();
+const router = require('express').Router();
 
 // sends file to path notes.html
 router.get('/', (req, res) => {
